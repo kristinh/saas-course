@@ -24,23 +24,22 @@ end
 
 module Enumerable
   def palindrome?
-     if self.respond_to?("reverse")
-       forward = self.reverse
-       forward == self
-     else
-       false
-     end
+    forward = self.to_a
+    reversed = Array.new
+    forward.reverse_each {|item| reversed.push(item) } 
+    reversed == forward 
   end
 end
 
 =begin
-puts "Madam, I'm Adam!".palindrome?.inspect
-puts "Madamx, I'm Adam!".palindrome?.inspect
 t = {"hello"=>"world"}
 puts t.palindrome?.inspect
 puts [1,2,3,2,1].palindrome?.inspect
 puts [12,3,4].palindrome?.inspect
+puts (1..10).palindrome?.inspect
 
+puts "Madam, I'm Adam!".palindrome?.inspect
+puts "Madamx, I'm Adam!".palindrome?.inspect
 puts 2.rupee.in(:dollar)
 puts 3.yen.in(:dollar)
 puts 6.euro.in(:dollar)
