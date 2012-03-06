@@ -20,3 +20,17 @@ class Numeric
   end
 end
 
+class String
+  def palindrome?
+    forward_string = self.gsub(/\W/, '').downcase
+    reverse_string = forward_string.reverse
+    reverse_string == forward_string
+  end
+end
+
+module Enumerable
+  def palindrome?
+    reversed = self.reverse
+    self == reversed
+  end
+end
